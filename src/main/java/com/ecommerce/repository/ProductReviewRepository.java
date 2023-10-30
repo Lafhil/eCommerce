@@ -1,7 +1,9 @@
 package com.ecommerce.repository;
 
-import com.ecommerce.entities.ProductReview;
+import com.ecommerce.entities.ProductReviews;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductReviewRepository extends JpaRepository<ProductReview, Integer> {
+@Repository
+public interface ProductReviewRepository extends JpaRepository<ProductReviews, Integer> {
 }

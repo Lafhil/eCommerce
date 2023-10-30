@@ -7,29 +7,33 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Date;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode
-public class ShippingInformation {
+public class OrderItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ShippingID", nullable = false)
-    private int shippingId;
+    @Column(name = "OrderItemID", nullable = false)
+    private int orderItemId;
 
     @Basic
-    @Column(name = "ShipDate", nullable = true)
-    private Date shipDate;
+    @Column(name = "Quantity", nullable = true)
+    private Integer quantity;
     @Basic
-    @Column(name = "ShipAddress", nullable = true, length = 255)
-    private String shipAddress;
-    @JsonBackReference(value = "shippingInformation")
+    @Column(name = "Price", nullable = true)
+    private BigDecimal price;
+    @JsonBackReference(value = "OrderItem")
     @ManyToOne
     @JoinColumn(name = "OrderID", referencedColumnName = "OrderID")
     private Orders ordersByOrderId;
+    @ManyToOne
+    @JsonBackReference (value = "OrderItem")
+    @JoinColumn(name = "ProductID", referencedColumnName = "ProductID")
+    private Products productsByProductId;
 
 
 }

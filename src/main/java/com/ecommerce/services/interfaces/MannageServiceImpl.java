@@ -12,16 +12,14 @@ import java.util.Optional;
 
 
 
-public class MannageServiceImpl<T,ID> implements  ManageServices<T,ID>{
+public class MannageServiceImpl<T,ID,REPO extends JpaRepository<T,ID>> implements  ManageServices<T,ID>{
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
-    @Setter @Getter
-    private JpaRepository<T,ID> rep;
+    private REPO rep;
     @Override
     public T addOne(T object) {
         return rep.save(object);
     }
-
     @Override
     public T saveOne(T object) {
         return rep.save(object);

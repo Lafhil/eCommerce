@@ -1,7 +1,9 @@
 package com.ecommerce.repository;
 
-import com.ecommerce.entities.AdminOrder;
+import com.ecommerce.entities.AdminOrders;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AdminOrderRepository extends JpaRepository<AdminOrder, Integer> {
+@Repository
+public interface AdminOrderRepository extends JpaRepository<AdminOrders, Integer> {
 }

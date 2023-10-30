@@ -1,7 +1,9 @@
 package com.ecommerce.repository;
 
-import com.ecommerce.entities.PaymentMethod;
+import com.ecommerce.entities.PaymentMethods;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PaymentMethodRepository extends JpaRepository<PaymentMethod, Integer> {
+@Repository
+public interface PaymentMethodRepository extends JpaRepository<PaymentMethods, Integer> {
 }

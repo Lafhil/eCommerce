@@ -1,7 +1,9 @@
 package com.ecommerce.repository;
 
-import com.ecommerce.entities.AdminLog;
+import com.ecommerce.entities.AdminLogs;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AdminLogRepository extends JpaRepository<AdminLog, Integer> {
+@Repository
+public interface AdminLogRepository extends JpaRepository<AdminLogs, Integer> {
 }

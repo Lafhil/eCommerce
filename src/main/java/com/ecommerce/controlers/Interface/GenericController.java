@@ -2,6 +2,7 @@ package com.ecommerce.controlers.Interface;
 
 import com.ecommerce.services.interfaces.ManageServices;
 import com.ecommerce.services.interfaces.MannageServiceImpl;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/{entity}")
-public class GenericController<T, ID> {
+public class GenericController<T, ID,CONT extends ManageServices<T,ID>> {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 
     @Autowired
     @Getter @Setter
-    private MannageServiceImpl<T, ID> service;
+
+    private CONT service;
 
 
     @GetMapping

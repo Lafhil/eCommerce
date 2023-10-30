@@ -1,34 +1,25 @@
 package com.ecommerce.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-public class Inventory implements Serializable {
+@Getter
+@Setter
+@EqualsAndHashCode
+public class Inventory {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ProductID", nullable = false)
-    private Integer id;
-
-    @Column(name = "StockQuantity")
+    private int productId;
+    @Basic
+    @Column(name = "StockQuantity", nullable = true)
     private Integer stockQuantity;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStockQuantity() {
-        return stockQuantity;
-    }
-
-    public void setStockQuantity(Integer stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
 
 }
