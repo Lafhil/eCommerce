@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/{entity}")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 public class GenericController<T, ID,CONT extends ManageServices<T,ID>> {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 

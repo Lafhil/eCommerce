@@ -27,7 +27,7 @@ public class Orders {
     @Basic
     @Column(name = "TotalAmount", nullable = true, precision = 2)
     private BigDecimal totalAmount;
-    @JsonManagedReference(value = "orderItem")
+    @JsonManagedReference(value = "ordersByOrderId")
     @OneToMany(mappedBy = "ordersByOrderId")
     private Collection<OrderItems> orderItemsByOrderId;
     @JsonBackReference(value = "order")

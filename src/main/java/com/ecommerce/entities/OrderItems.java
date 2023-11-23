@@ -26,12 +26,12 @@ public class OrderItems {
     @Basic
     @Column(name = "Price", nullable = true)
     private BigDecimal price;
-    @JsonBackReference(value = "OrderItem")
+    @JsonBackReference(value = "ordersByOrderId")
     @ManyToOne
     @JoinColumn(name = "OrderID", referencedColumnName = "OrderID")
     private Orders ordersByOrderId;
     @ManyToOne
-    @JsonBackReference (value = "OrderItem")
+    @JsonBackReference (value = "productsByProductId")
     @JoinColumn(name = "ProductID", referencedColumnName = "ProductID")
     private Products productsByProductId;
 

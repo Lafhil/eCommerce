@@ -15,6 +15,7 @@ import java.util.Optional;
 public class MannageServiceImpl<T,ID,REPO extends JpaRepository<T,ID>> implements  ManageServices<T,ID>{
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
+    @Getter
     private REPO rep;
     @Override
     public T addOne(T object) {

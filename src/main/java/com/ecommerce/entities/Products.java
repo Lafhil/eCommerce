@@ -31,10 +31,10 @@ public class Products {
     private BigDecimal price;
     @Lob
     private byte[] photo;
-@JsonManagedReference(value = "adminOrderItem")
+    @JsonManagedReference(value = "adminOrderItem")
     @OneToMany(mappedBy = "productsByProductId")
     private Collection<AdminOrderItems> adminOrderItemsByProductId;
-    @JsonManagedReference(value = "OrderItem")
+    @JsonManagedReference(value = "productsByProductId")
     @OneToMany(mappedBy = "productsByProductId")
     private Collection<OrderItems> orderItemsByProductId;
     @JsonManagedReference(value = "productReview")
@@ -45,8 +45,33 @@ public class Products {
     @JoinColumn(name = "CategoryID", referencedColumnName = "CategoryID")
     private ProductCategories productCategoriesByCategoryId;
 
+    public String getCategorie() {
+        return this.productCategoriesByCategoryId.getCategoryName();
+    }
+
+    public String getStatus() {
+
+            if(this.stock>=10)
+                    this.status= "INSTOCK";
+                else if( stock<5 )
+                this.status= "LOWSTOCK";
+                else if (stock==0 )
+                this.status= "OUTOFSTOCK";
+                return this.status;
+
+    }
+
+    @Transient
+    @Column(name = "status", nullable = true)
+    private String status;
+    @Basic
+    @Column(name = "stock", nullable = true)
+    private Integer  stock;
+    @Transient
+    private String categorie;
     //@JsonManagedReference(value = "OrderItem")
     @OneToMany(mappedBy = "idproduct")
     private Collection<ProductImages> images;
+
 
 }
