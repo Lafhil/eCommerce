@@ -2,9 +2,11 @@ package com.ecommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode
 public class Options {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

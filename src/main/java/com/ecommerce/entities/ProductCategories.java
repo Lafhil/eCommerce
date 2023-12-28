@@ -1,7 +1,9 @@
 package com.ecommerce.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,10 +13,10 @@ import java.util.Objects;
 
 @Entity
 
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+//@EqualsAndHashCode
 public class ProductCategories {
     @Getter
     @Setter
@@ -40,10 +42,11 @@ public class ProductCategories {
 
     @Setter
     @Transient
+    //@JsonBackReference
     private String imageDecode;
     @Getter
     @Setter
-
+    @JsonBackReference("imageCategorie")
     private byte[] categorieImage;
     @Getter
     @Setter
@@ -57,7 +60,7 @@ public class ProductCategories {
     @Getter
     @Setter
     @JsonManagedReference(value = "product")
-    @OneToMany(mappedBy = "productCategoriesByCategoryId")
+    @OneToMany(mappedBy = "productCategoriesByCategoryId",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Collection<Products> productsByCategoryId;
     @Getter
     @Setter
@@ -67,15 +70,12 @@ public class ProductCategories {
 
 
 
-
     public String getImageDecode() {
         //System.err.println(this.categorieImage);
         if(this.categorieImage!=null ){
             if(this.imageDecode==null)
             this.imageDecode= new String(this.categorieImage, StandardCharsets.UTF_8);
         }
-
-
         return this.imageDecode;
     }
 }

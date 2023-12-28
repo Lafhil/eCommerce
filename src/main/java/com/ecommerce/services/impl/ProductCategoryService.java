@@ -42,4 +42,10 @@ public class ProductCategoryService extends MannageServiceImpl<ProductCategories
         System.err.println("----------------------"+lst.size());
         return lst;
     }
+    public ProductCategories getByName(String name){
+        ProductCategories cat1=new ProductCategories();
+        cat1.setCategoryName(name);
+        Example<ProductCategories> example = Example.of(cat1);
+        return this.getRep().findAll(example).get(0);
+    }
 }

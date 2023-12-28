@@ -71,6 +71,10 @@ public class CategoriProductControler extends GenericController<ProductCategorie
     public ResponseEntity<List<ProductCategories>>getShilds(){
         return ResponseEntity.of(Optional.ofNullable(getService().getSubCatgories()));
     }
+    @GetMapping("/getByName/{name}")
+    public ResponseEntity<ProductCategories>getByName(@PathVariable String name){
+        return ResponseEntity.of(Optional.ofNullable(getService().getByName(name)));
+    }
     @GetMapping("/getCategoriesIgnorCurrent/{current}")
     public List<ProductCategories>getCategoriesIgnoreCurrent(@PathVariable int current){
         System.out.println(current);

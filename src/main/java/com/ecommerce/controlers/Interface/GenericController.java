@@ -42,6 +42,7 @@ public class GenericController<T, ID,CONT extends ManageServices<T,ID>> {
 
     @PostMapping
     public T create(@RequestBody T entity) {
+        System.err.println(entity);
         return service.saveOne(entity);
     }
 

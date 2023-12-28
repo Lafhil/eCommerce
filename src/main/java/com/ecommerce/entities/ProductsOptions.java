@@ -2,9 +2,11 @@ package com.ecommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode
 public class ProductsOptions {
     @EmbeddedId
   private  ProductsOptionsKey productsOptionsKey;

@@ -12,7 +12,6 @@ import java.util.Objects;
 
 @Entity
 @Getter
-@Setter
 @EqualsAndHashCode
 public class AdminOrderItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
